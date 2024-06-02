@@ -23,7 +23,7 @@ const Footer = () => (
         <div className="col-md-3 mb-md-0 mb-3">
           <h5 className="text-uppercase">연락처</h5>
           <ul className="list-unstyled">
-            <li><a href="mailto:qkrthgus7026@gmail.com">qkrthgus7026@gmail.com</a></li>
+            {/* <li><a href="mailto:qkrthgus7026@gmail.com">qkrthgus7026@gmail.com</a></li> */}
             <li><a href="#!">문의하기</a></li>
           </ul>
         </div>
@@ -31,7 +31,7 @@ const Footer = () => (
     </div>
 
     <div className="footer-copyright text-center py-3">
-      © 2024 환율 변환기: <a href="https://yourwebsite.com"> </a>
+      © 2024 환율 변환기 <a href="https://yourwebsite.com"> </a>
     </div>
   </footer>
 );
