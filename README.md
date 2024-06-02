@@ -18,5 +18,35 @@ npm i react-router-dom
 - API URL: https://www.koreaexim.go.kr/site/program/financial/exchangeJSON
 - 예시 URL: https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={YOUR_API_KEY}&searchdate=20230601&data=AP01
 - API 키 설정: `.env` 파일에 API 키를 저장한다.
-```REACT_APP_API_KEY=your_api_key_here
+```REACT_APP_API_KEY=your_api_key_here```
+
+## CORS 문제 해결
+### 프록시 서버 사용 (http-proxy-middleware)
+1. `http-proxy-middleware` 설치
+```npm install http-proxy-middleware --save```
+
+2. 프록시 설정
+- `src/setupProxy.js` 파일을 생성하고 다음 내용을 추가
+```javascrpt
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+module.exports = function(app) {
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'https://www.koreaexim.go.kr',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '',
+      },
+    })
+  );
+};
+
+```
+3. API 요청 경로 변경
+```javascrpt
+const response = await axios.get(
+  `/api/site/program/financial/exchangeJSON?authkey=${process.env.REACT_APP_API_KEY}&searchdate=20230601&data=AP01`
+);
 ```
