@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# 실시간 환율 변환 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 개요
+본 프로젝트는 React를 사용하여 환율 변환기 애플리케이션을 만드는 것이다. 한국수출입은행의 Open API를 사용하여 실시간 환율 데이터를 가져오고, 사용자가 입력한 금액을 선택한 통화로 변환하는 기능을 구현하였다.
+- <b>installed Library</b>
+```
+npm install axios
+npm install react-bootstrap bootstrap
+npm i react-router-dom
+```
 
-## Available Scripts
+## 주요 기능
+1. 실시간 환율 데이터 가져오기: 한국수출입은행 API를 사용하여 최신 환율 데이터를 가져온다.
+2. 환율 변환 계산기: 사용자가 입력한 금액을 선택한 통화로 변환한다.
+3. UI 구성: 사용자 친화적인 인터페이스를 통해 금액 입력 및 통화 선택을 지원한다.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API 사용
+- API URL: https://www.koreaexim.go.kr/site/program/financial/exchangeJSON
+- 예시 URL: https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={YOUR_API_KEY}&searchdate=20230601&data=AP01
+- API 키 설정: `.env` 파일에 API 키를 저장한다.
+```REACT_APP_API_KEY=your_api_key_here
+```
