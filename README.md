@@ -28,7 +28,7 @@ npm install redux react-redux @reduxjs/toolkit
 
 2. 프록시 설정
 - `src/setupProxy.js` 파일을 생성하고 다음 내용을 추가
-```javascrpt
+```javascript
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
@@ -46,7 +46,7 @@ module.exports = function(app) {
 
 ```
 3. API 요청 경로 변경
-```javascrpt
+```javascript
 const response = await axios.get(
   `/api/site/program/financial/exchangeJSON?authkey=${process.env.REACT_APP_API_KEY}&searchdate=20230601&data=AP01`
 );
@@ -56,8 +56,8 @@ const response = await axios.get(
 Redux를 사용하여 환율 데이터와 변환 내역을 중앙에서 관리한다. 이를 통해 컴포넌트 간 상태 공유가 용이해졌다.
 
 ### Redux 설정 (`store.js`)
-- setRates 리듀서: 환율 데이터를 상태에 저장한다. API로부터 가져온 데이터를 rates 상태에 저장합니다.
-- addHistory 리듀서: 변환 내역을 상태에 추가한다. 사용자가 수행한 환율 변환 내역을 history 배열에 추가합니다.
+- setRates 리듀서: 환율 데이터를 상태에 저장한다. API로부터 가져온 데이터를 rates 상태에 저장한다.
+- addHistory 리듀서: 변환 내역을 상태에 추가한다. 사용자가 수행한 환율 변환 내역을 history 배열에 추가한다.
 
 ### 모달 컴포넌트 (`HistoryModal.jsx`)
 - open: 모달 창이 열려 있는지 여부를 결정한다.
@@ -66,17 +66,17 @@ Redux를 사용하여 환율 데이터와 변환 내역을 중앙에서 관리�
 
 ### 환율 변환기 컴포넌트 (`Converter.jsx`)
 1. Redux 상태 관리:
-setRates와 addHistory 액션을 사용하여 환율 데이터와 변환 내역을 중앙에서 관리합니다.
-useDispatch와 useSelector를 사용하여 Redux 상태와 액션을 컴포넌트에 연결합니다.
+setRates와 addHistory 액션을 사용하여 환율 데이터와 변환 내역을 중앙에서 관리한다.
+useDispatch와 useSelector를 사용하여 Redux 상태와 액션을 컴포넌트에 연결한다.
 
 2. 환율 데이터 가져오기:
-useEffect 훅을 사용하여 컴포넌트가 마운트될 때와 fromCurrency가 변경될 때마다 API에서 환율 데이터를 가져옵니다.
-데이터를 가공하여 Redux 상태에 저장합니다.
+useEffect 훅을 사용하여 컴포넌트가 마운트될 때와 fromCurrency가 변경될 때마다 API에서 환율 데이터를 가져온다.
+데이터를 가공하여 Redux 상태에 저장한다.
 
 3. 환율 변환:
-두 번째 useEffect 훅을 사용하여 amount, toCurrency, rates, fromCurrency가 변경될 때마다 변환된 금액을 계산합니다.
-변환된 금액을 convertedAmount 상태에 저장하고, 변환 내역을 Redux 상태에 추가합니다.
+두 번째 useEffect 훅을 사용하여 amount, toCurrency, rates, fromCurrency가 변경될 때마다 변환된 금액을 계산한다.
+변환된 금액을 convertedAmount 상태에 저장하고, 변환 내역을 Redux 상태에 추가한다.
 
 4. 모달 창:
-HistoryModal 컴포넌트를 사용하여 변환 내역을 모달 창에 표시합니다.
-modalOpen 상태를 통해 모달 창을 열고 닫을 수 있습니다.
+HistoryModal 컴포넌트를 사용하여 변환 내역을 모달 창에 표시한다.
+modalOpen 상태를 통해 모달 창을 열고 닫을 수 있다.
